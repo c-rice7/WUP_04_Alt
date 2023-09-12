@@ -42,6 +42,8 @@ basicCN <- ggplot(gssdata,aes(x=RACE,y=WORDSUM))
 basicCN + geom_boxplot()
 ```
 
+The graph shows only very small differences between the White and Black races scores, with identical medians and nearly identical 50th percentile ranges. Only their mins, maxs, and 75th percentiles differ significantly. However both the White and Black races data is noticeably higher on average with their medians being nearly above the 75th percentile of the Other race(s).
+
 ### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
@@ -49,6 +51,8 @@ basicCN + geom_boxplot()
 ```{r}
 favstats(WORDSUM~RACE,data=gssdata)
 ```
+
+There is very little difference in the means of the White and Black races, however both the mean of the Whtie race and the Black race is over a full point higher than the mean of the category of Other race(s).
 
 ## Inferential Results
 
@@ -59,10 +63,16 @@ model1 <- aov(WORDSUM~RACE,data=gssdata)
 summary.aov(model1)
 ```
 
+The p-value of 0.0182 shows their is a significant difference between the three categories of data with regard to race.
+
 ```{r}
-plot(TukeyHSD(model1))
+plot(TukeyHSD(model1),las=2)
 ```
+
+The final plot indicates that only the difference between the White race and the Other race(s) is significant since its 95% confidence range does not cover 0. There is likely no significant difference between either the Black and Other race(s) nor the Black and White race(s) due to their 95% confidence ranges both falling on/around 0.
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
+The overall data shows a small significant difference between the White and Other race(s) but no significant difference between the other categories. However both the Black and Other race(s) have massively smaller sample sizes than the White race which makes comparison between any of the categories difficult to interpret with any significant level of confidence.
