@@ -63,7 +63,7 @@ model1 <- aov(WORDSUM~RACE,data=gssdata)
 summary.aov(model1)
 ```
 
-The p-value of 0.0182 shows their is a significant difference between the three categories of data with regard to race.
+The p-value of 0.0182 shows their is a significant difference between the three categories of data with regard to race. This disproves the null hypothesis but does not detail where the difference lies.
 
 ```{r}
 plot(TukeyHSD(model1),las=2)
